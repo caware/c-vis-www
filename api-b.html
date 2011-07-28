@@ -18,7 +18,49 @@
 
 <h2>Raw Data</h2>
 
-<p>The raw data used is also directly available for download at <a href="http://www.cl.cam.ac.uk/meters/elec/">http://www.cl.cam.ac.uk/meters/elec/</a>, and is provided in json object files that you are free to download and use. (There will be better explanations of the formats in the near future...) The tree will also grow as we add more meters.</p>
+<p>The data used by the visualisation tool is directly available for download at <a href="http://www.cl.cam.ac.uk/meters/elec/">http://www.cl.cam.ac.uk/meters/elec/</a>.</p>
+
+<p>The data is organised in a directory structure which mimics the electricity distribution tree. A given directory may have data files and/or subdirectories.</p>
+
+<p>There are data files with 2 minute time series (one per day) and with hourly time series (one per month). Thus for example:</p>
+
+<p>http://www.cl.cam.ac.uk/meters/elec/primary-cs1-riser/F-lighting/</p>
+
+<p>is a directory that contains the reading for the lighting circuit on the First floor that
+comes off the CS1 riser.  The data files in that directory are of the form</p>
+
+<p>S-m23-yyyy-mm-dd.json (for the 2 minute time series)</p>
+<p>S-m23-yyyy-mm,json (for the 1 hour time series.)</p>
+
+<p>If one looks inside any of the data files once can discern that the data is concerned with
+lighting on the First floor in the North section of the building.</p>
+
+<p>Data files are in JavaScript Object Notation {http://www.json.org/} (json).  This
+is so that the files can be easily manipulated in JavaScript.  Indeed our visualisation tools
+are built on top of JavaScript packages that do most of the heavy lifting.  We will supply
+some very simple code to help you get started if you want to perform any analysis
+of the data.  (Or you can always look at the source of the tool itself - after all you download
+it to run it...)</p>
+
+<p>Each file contains a small number of descriptive tagged values and a substantial time series
+whose pairs are a timestamp and an average power in kilowatts for that interval. A JavaScript
+time stamp is epoch milliseconds since 1 Jan 1970.</p>
+
+<p>More tags will be added in the future.  Current tags include:</p>
+
+<ul>
+<li>label:  ??</li>
+<li>path: the directory to which the data file belongs</li>
+<li>description: an indication of what the electricity is used for, eg lighting, sockets, air conditioning...</li>
+<li>room: where the meter is located</li>
+<li>coverage: what physical area the electricity is used in</li>
+<li>type: the type of meter from which the data was obtained</li>
+<li>ts: ???</li>
+</ul>
+
+<p>We frequently regenerate the published data from the \textit{real} raw data so new tags
+will be added to old time series, (and old ones may disappear - although at some point
+we will commit to backwards compatibility)</p>
 
 </td></tr></table>
 </body>
